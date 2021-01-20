@@ -1,0 +1,81 @@
+import turtle
+import random
+import time
+
+screen_width = 800
+screen_height = 350
+
+screen = turtle.Screen()
+screen.title('Pong Game')
+screen.setup(screen_width, screen_height)
+screen.bgcolor('#000011')
+screen.tracer(0)
+
+bat1 = turtle.Turtle()
+bat1.shape('square')
+bat1.shapesize(7, 1, 1)
+bat1.color('#00DDFF')
+bat1.penup()
+
+bat2 = turtle.Turtle()
+bat2.shape('square')
+bat2.shapesize(7, 1, 1)
+bat2.color('#00DDFF')
+bat2.penup()
+
+bat1.setpos(-screen_width // 2 + 20, 0)
+bat2.setpos(screen_width // 2 - 25, 0)
+
+ball = turtle.Turtle()
+ball.penup()
+ball.shape('circle')
+ball.shapesize(1.7, 1.7, 1)
+ball.color('white')
+
+pen = turtle.Turtle()
+pen.hideturtle()
+pen.penup()
+pen.pencolor('#777777')
+
+
+def go_up():
+    bat1.sety(bat1.ycor() + 10)
+    if bat1.ycor() > screen_height // 2 - 70:
+        bat1.sety(bat1.ycor() - 10)
+
+
+def go_down():
+    bat1.sety(bat1.ycor() - 10)
+    if bat1.ycor() < -screen_height // 2 + 70:
+        bat1.sety(bat1.ycor() + 10)
+
+
+def go_up2():
+    bat2.sety(bat2.ycor() + 10)
+    if bat2.ycor() > screen_height // 2 - 70:
+        bat2.sety(bat2.ycor() - 10)
+
+
+def go_down2():
+    bat2.sety(bat2.ycor() - 10)
+    if bat2.ycor() < -screen_height // 2 + 70:
+        bat2.sety(bat2.ycor() + 10)
+
+
+screen.onkeypress(go_up, 'Up')
+screen.onkeypress(go_down, 'Down')
+screen.onkeyrelease(go_up, 'Up')
+screen.onkeyrelease(go_down, 'Down')
+screen.onkeypress(go_up2, 'w')
+screen.onkeypress(go_down2, 's')
+screen.onkeyrelease(go_up2, 'w')
+screen.onkeyrelease(go_down2, 's')
+screen.listen()
+
+while True:
+    pen.pensize(10)
+    pen.goto(0, -screen_height // 2)
+    pen.pendown()
+    pen.goto(0, screen_height // 2)
+    screen.update()
+    time.sleep(0.01)
