@@ -2,7 +2,7 @@
 PLEASE READ THIS PART...
 
 Code to demonstrate multiprocessing in python using a loading screen
-This code is only for demonstrate a simple scenario
+This code is only to demonstrate a simple scenario
 For complicated situations involving multiple child processes,
 it is recommended to create a queue of such processes to manage them properly
 
