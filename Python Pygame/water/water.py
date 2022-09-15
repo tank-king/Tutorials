@@ -9,7 +9,7 @@ Point = pygame.Vector2
 
 # INITIAL RUNTIME CONFIGURATIONS
 
-# You can edit these accordingly based on what modules you have
+# You can edit these accordingly based on the modules you have
 
 SMOOTH = True  # uses numpy + scipy
 TEXTURE = True  # uses texture images
