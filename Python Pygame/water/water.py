@@ -248,7 +248,7 @@ def main_game():
     wave = Wave()
     s = pygame.Surface(screen.get_size(), pygame.SRCALPHA).convert_alpha()
     objects: list[pymunk.Circle] = []
-    leaves: list[Ball] = []
+    floating_objects: list[Ball] = []
 
     while True:
         events = pygame.event.get()
@@ -275,7 +275,7 @@ def main_game():
                     objects.append(rock)
                 if e.button == 3:
                     mx, my = pygame.mouse.get_pos()
-                    leaves.append(Ball(mx, my))
+                    floating_objects.append(Ball(mx, my))
         if USE_PYMUNK:
             space.step(1 / FPS)
         screen.fill('black')
@@ -288,7 +288,7 @@ def main_game():
                     if VOLUME_RISE:
                         wave.add_volume(i.radius ** 2 * math.pi)
             draw_rock(i, screen)
-        for i in leaves:
+        for i in floating_objects:
             i.update()
             i.draw(screen)
             index = wave.get_spring_index_for_x_pos(i.x)
